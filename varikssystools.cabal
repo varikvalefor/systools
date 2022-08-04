@@ -28,3 +28,4 @@ library
     default-language: Haskell2010
     other-modules:    VarikSysTools.Sysctl
                       VarikSysTools.Base
+                      VarikSysTools.Info.Temperature.CPU.OpenBSD
