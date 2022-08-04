@@ -17,10 +17,10 @@ import VarikSysTools.Sysctl;
 cpuTempsOpenBSD :: IO (Either ErrorCode [Scientific]);
 cpuTempsOpenBSD = (>>= sequence . map stringToKelvin) <$> scout;
 
--- | ni'o gonai su'o da poi se sinxa lo me'oi .'Scientific'. zo'u
--- ge la'oi .@k@. konkatena fi du bu da gi la'o zoi.
--- @possiblyRead k@ .zoi me'oi .'Right'. me'oi .'Scientific'. da gi
--- me'oi .'Left'. skicu lo nu la'oi .@possiblyRead@. fliba
+-- | ni'o gonai su'o da poi se sinxa lo me'oi .'Scientific'. zo'u ge
+-- la'oi .@k@. konkatena fi du bu da gi la'o zoi. @possiblyRead k@ .zoi
+-- me'oi .'Right'. me'oi .'Scientific'. da gi me'oi .'Left'. skicu lo nu
+-- la'oi .@possiblyRead@. fliba
 possiblyRead :: String
              -> Either ErrorCode Scientific;
 possiblyRead t = maybe (Left $ cong ++ failMsg) reed $ secondBitM t
@@ -35,23 +35,21 @@ possiblyRead t = maybe (Left $ cong ++ failMsg) reed $ secondBitM t
 };
 
 -- | ni'o go ge snada lo nu me'oi .parse. la'oi .@j@. gi la'o zoi.
--- @stringToKelvin j@ .zoi me'oi .'Right'. lo sumji be lo namcu poi
--- se sinxa la'oi .@j@. bei li rezecipipamu gi la'o zoi.
--- @stringToKelvin j@ .zoi me'oi .'Left'. lo cusku le du'u na me'oi
--- .parse. la'oi .@j@.
+-- @stringToKelvin j@ .zoi me'oi .'Right'. lo sumji be lo namcu poi se
+-- sinxa la'oi .@j@. bei li rezecipipamu gi la'o zoi. @stringToKelvin j@
+-- .zoi me'oi .'Left'. lo cusku le du'u na me'oi .parse. la'oi .@j@.
 stringToKelvin :: String -> Either ErrorCode Scientific;
 stringToKelvin = fmap (+ 273.15) . possiblyRead;
 
--- | ni'o ro da poi velski be lo nu la'oi .@cpuTempsOpenBSD@.
--- fliba zo'u la'oi .@viet@. lidne pe'aru'e da gi'e indika le du'u
--- da se me'oi .output. la'oi .@cpuTempsOpenBSD@.
+-- | ni'o ro da poi velski be lo nu la'oi .@cpuTempsOpenBSD@. fliba zo'u
+-- la'oi .@viet@. lidne pe'aru'e da gi'e indika le du'u da se me'oi
+-- .output. la'oi .@cpuTempsOpenBSD@.
 viet :: ErrorCode;
 viet = "cpuTempsOpenBSD: ";
 
--- | ni'o ro da poi me'oi .@scout@. zo'u gonai da me'oi .'IO'.
--- me'oi .'Right'. lo'i .orsi be li re bei lo cmene be lo mu'oi
--- zoi. @sysctl(8)@ .zoi snicne goi ko'a be'o bei lo se snicne
--- be ko'a gi da me'oi .'IO'. me'oi .'Left'. lo velski be lo nu
--- me'oi .@scout@. fliba
+-- | ni'o ro da poi me'oi .@scout@. zo'u gonai da me'oi .'IO'. me'oi
+-- .'Right'. lo'i .orsi be li re bei lo cmene be lo mu'oi zoi.
+-- @sysctl(8)@ .zoi snicne goi ko'a be'o bei lo se snicne be ko'a gi da
+-- me'oi .'IO'. me'oi .'Left'. lo velski be lo nu me'oi .@scout@. fliba
 scout :: IO (Either ErrorCode [String]);
 scout = sysctlMatching ["sensor", "temp", "cpu"];
