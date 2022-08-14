@@ -11,4 +11,5 @@
 -- me'oi .library.
 module VarikSysTools.Base where
 
+-- | ni'o ro da poi me'oi .'ErrorCode'. zo'u da skicu lo nu fliba
 type ErrorCode = String;
