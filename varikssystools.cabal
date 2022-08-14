@@ -17,15 +17,15 @@ category:           System
 extra-source-files: CHANGELOG.md
 
 library
-    ghc-options:      -Wall
-    exposed-modules:  VarikSysTools.Info.Temperature.CPU
+  ghc-options:      -Wall
+  exposed-modules:  VarikSysTools.Info.Temperature.CPU
 
-    build-depends:    base           ^>= 4.14.3.0,
-                      scientific      >= 0.3.0.0      && < 0.4,
-                      split           >= 0.2.0.0      && < 0.3,
-                      process         >= 1.6.0.0      && < 1.7
-    hs-source-dirs:   src
-    default-language: Haskell2010
-    other-modules:    VarikSysTools.Sysctl
-                      VarikSysTools.Base
-                      VarikSysTools.Info.Temperature.CPU.OpenBSD
+  build-depends:    base           ^>= 4.14.3.0,
+                    scientific      >= 0.3.0.0      && < 0.4,
+                    split           >= 0.2.0.0      && < 0.3,
+                    process         >= 1.6.0.0      && < 1.7
+  hs-source-dirs:   src
+  default-language: Haskell2010
+  other-modules:    VarikSysTools.Sysctl
+                    VarikSysTools.Base
+                    VarikSysTools.Info.Temperature.CPU.OpenBSD
