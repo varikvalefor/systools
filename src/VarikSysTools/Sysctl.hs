@@ -1,3 +1,13 @@
+-- | Module:    VarikSysTools.Base
+-- Decription:  le fancu poi filgau lo nu pilno la'o gy. sysctl(8) .gy
+-- Copyright:   (c) Varik Valefor 2022
+-- License:     Unlicense
+-- Maintainer:  varikvalefor@aol.com
+-- Stability:   experimental
+-- Portability: portable
+--
+-- ni'o le ti me'oi .module. cu vasru la'oi .'sysctlMatching'. .e le
+-- fancu poi se pilno la'oi .'sysctlMatching'.
 module VarikSysTools.Sysctl (sysctlMatching) where
 import System.Exit;
 import System.Process;

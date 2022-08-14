@@ -1,4 +1,12 @@
--- | ni'o le ti me'oi .module. cu vasru ko'a goi la'oi .'cpuTemps'.
+-- | Module:    VarikSysTools.Base
+-- Decription:  le filgau be lo nu zgana lo se kelvo be lo rucyca'a
+-- Copyright:   (c) Varik Valefor 2022
+-- License:     Unlicense
+-- Maintainer:  varikvalefor@aol.com
+-- Stability:   experimental
+-- Portability: portable
+--
+-- ni'o le ti me'oi .module. cu vasru ko'a goi la'oi .'cpuTemps'.
 module VarikSysTools.Info.Temperature.CPU (cpuTemps) where
 import System.Info;
 import Data.Scientific;

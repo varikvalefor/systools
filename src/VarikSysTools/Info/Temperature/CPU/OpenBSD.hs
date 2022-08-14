@@ -1,4 +1,13 @@
--- | ni'o le ti me'oi .module. cu vasru ko'a goi la'oi
+-- | Module:    VarikSysTools.Info.Temperature.CPU.OpenBSD
+-- Decription:  le filgau be lo nu zgana lo se kelvo be lo rucyca'a be
+                lo se samcmu be la'oi .OpenBSD.
+-- Copyright:   (c) Varik Valefor 2022
+-- License:     Unlicense
+-- Maintainer:  varikvalefor@aol.com
+-- Stability:   experimental
+-- Portability: portable
+--
+-- ni'o le ti me'oi .module. cu vasru ko'a goi la'oi
 -- .'cpuTempsOpenBSD'. .e le fancu poi pagbu ko'a
 module VarikSysTools.Info.Temperature.CPU.OpenBSD (cpuTempsOpenBSD) where
 import Text.Read;
