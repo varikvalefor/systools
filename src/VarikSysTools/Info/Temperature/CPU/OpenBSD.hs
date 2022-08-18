@@ -22,7 +22,7 @@ import VarikSysTools.Sysctl;
 -- | ni'o ganai ko'a goi lo skami poi vasru lo ganse poi se mapti la'oi
 -- .OpenBSD. .e la'oi .@cpuTempsOpenBSD. gi'e se samcmu la'oi .OpenBSD.
 -- cu co'e zo'oi. @cpuTempsOpenBSD@. gi la'oi .@cpuTempsOpenBSD@. me'oi
--- .return. lo lise be lo se kelvo be lo rucyca'a poi se pilno ko'a
+-- .return. lo liste be lo se kelvo be lo rucyca'a poi se pilno ko'a
 cpuTempsOpenBSD :: IO (Either ErrorCode [Scientific]);
 cpuTempsOpenBSD = (>>= sequence . map stringToKelvin) <$> scout;
 
