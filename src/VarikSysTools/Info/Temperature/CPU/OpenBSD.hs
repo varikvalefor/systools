@@ -1,6 +1,6 @@
 -- | Module:    VarikSysTools.Info.Temperature.CPU.OpenBSD
 -- Decription:  le filgau be lo nu zgana lo se kelvo be lo rucyca'a be
-                lo se samcmu be la'oi .OpenBSD.
+--              lo se samcmu be la'oi .OpenBSD.
 -- Copyright:   (c) Varik Valefor 2022
 -- License:     Unlicense
 -- Maintainer:  varikvalefor@aol.com
