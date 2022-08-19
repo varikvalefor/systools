@@ -88,13 +88,13 @@ sysctlMatching f = fmap (filter $ \t -> all (`nfx` t) f) <$> sysctlLines
   --
   -- ni'o gonai ge la'oi .@t@. indika lo du'u fliba gi la'o zoi.
   -- @toEither t@ .zoi me'oi .'Left'. skicu lo nu fliba gi la'o zoi.
-  -- @toEither t@ .zoi me'oi .'Right'. te .orsi be la'oi .@t@.
+  -- @toEither t@ .zoi me'oi .'Right'. te .orsi la'oi .@t@.
   --
   -- = English
   --
   -- If @t@ indicates failure, then @toEither t@ is a 'Left' description
   -- of the failure.  If @t@ indicates that everything is 'Right', then
-  -- @toEither t@ returns the third element of @t@.
+  -- @toEither t@ returns the first element of @t@.
   toEither :: (ExitCode, String, String)
            -> Either ErrorCode String;
   toEither (ExitFailure t, a, b) = Left m
