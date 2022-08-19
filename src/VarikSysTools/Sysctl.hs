@@ -9,7 +9,7 @@
 --
 -- = la .lojban.
 --
--- ni'o le ti me'oi .module. cu vasru la'oi .'sysctlMatching'. .e le
+-- ni'o le ti me'oi .module. cu vasru la'oi .'sysctlMatching'. je le
 -- fancu poi se pilno la'oi .'sysctlMatching'.
 --
 -- = English
@@ -24,11 +24,11 @@ import VarikSysTools.Base;
 -- \| = la .lojban.
 --
 -- ni'o go la'o zoi. @nfx a b@ .zoi me'oi .'True'. gi la'oi .@b@.
--- vasru la'oi .@b@.
+-- vasru la'oi .@a@.
 --
 -- = English
 --
--- @nfx a b@ if and only if @b@ is an infix of @a@.
+-- @nfx a b@ if and only if @a@ is an infix of @b@.
 nfx :: Eq a => [a] -> [a] -> Bool;
 nfx _ [] = False;
 nfx a b = take (length a) b == a || nfx a (drop 1 b);
@@ -37,7 +37,7 @@ nfx a b = take (length a) b == a || nfx a (drop 1 b);
 --
 -- ni'o gonai ge ko'a goi la'o zoi. @sysctlMatching t@ .zoi na fliba
 -- gi ko'a me'oi .'IO'. me'oi .'Right'. lo'i lerpinsle poi se me'oi
--- .output. la'o zoi. @sysctl(8)@ .zoi gi'e vasru lo ro se vasru be
+-- .output. la'o zoi. @sysctl(8)@ .zoi je cu vasru lo ro se vasru be
 -- la'oi .@t@. gi ko'a me'oi .'IO'. me'oi .'Left'. lo velski be lo nu
 -- ko'a fliba
 --
