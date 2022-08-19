@@ -19,10 +19,11 @@ import Data.Scientific;
 import VarikSysTools.Base;
 import VarikSysTools.Sysctl;
 
--- | ni'o ganai ko'a goi lo skami poi vasru lo ganse poi se mapti la'oi
--- .OpenBSD. .e la'oi .@cpuTempsOpenBSD. gi'e se samcmu la'oi .OpenBSD.
--- cu co'e zo'oi. @cpuTempsOpenBSD@. gi la'oi .@cpuTempsOpenBSD@. me'oi
--- .return. lo liste be lo se kelvo be lo rucyca'a poi se pilno ko'a
+-- | ni'o ganai ko'e goi lo skami poi se co'e la'oi .'cpuTempsOpenBSD'.
+-- cu se samcmu la'oi .OpenBSD. gi gonai ge la'oi .'cpuTempsOpenBSD'.
+-- me'oi .return. me'oi .'Right'. lo'i se kelvo be lo rucyca'a be ko'e
+-- gi me'oi .return. lo me'oi .'Left'. me'oi .'ErrorCode'. poi skicu lo
+-- nu fliba
 cpuTempsOpenBSD :: IO (Either ErrorCode [Scientific]);
 cpuTempsOpenBSD = (>>= sequence . map stringToKelvin) <$> scout;
 
