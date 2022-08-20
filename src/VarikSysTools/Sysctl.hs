@@ -68,27 +68,6 @@ sysctlMatching f = fmap (filter $ \t -> all (`nfx` t) f) <$> sysctlLines
        -> String
        -> IO (ExitCode, String, String);
   rpwe = readProcessWithExitCode;
-
-  -- \| = la .lojban.
-  --
-  -- ni'o gonai ge la'oi .@t@. indika lo du'u fliba gi la'o zoi.
-  -- @toEither t@ .zoi me'oi .'Left'. skicu lo nu fliba gi la'o zoi.
-  -- @toEither t@ .zoi me'oi .'Right'. te .orsi la'oi .@t@.
-  --
-  -- = English
-  --
-  -- If @t@ indicates failure, then @toEither t@ is a 'Left' description
-  -- of the failure.  If @t@ indicates that everything is 'Right', then
-  -- @toEither t@ returns the first element of @t@.
-  toEither :: (ExitCode, String, String)
-           -> Either ErrorCode String;
-  toEither (ExitFailure t, a, b) = Left m
-    where {
-    m = "sysctlMatching: sysctl reports exit code " ++ show t ++
-        "and outputs " ++ show a ++ " and " ++ show b ++ " to the \
-        \standard output and standard error, respectively.";
-  };
-  toEither (_, a, _) = Right a;
 };
 
 -- | = la .lojban.
@@ -105,3 +84,24 @@ sysctlMatching f = fmap (filter $ \t -> all (`nfx` t) f) <$> sysctlLines
 -- are output by sysctl(8).
 sysctlLines :: IO (Either ErrorCode [String]);
 sysctlLines = fmap lines . toEither <$> rpwe "sysctl" [] [];
+
+-- | = la .lojban.
+--
+-- ni'o gonai ge la'oi .@t@. indika lo du'u fliba gi la'o zoi.
+-- @toEither t@ .zoi me'oi .'Left'. skicu lo nu fliba gi la'o zoi.
+-- @toEither t@ .zoi me'oi .'Right'. te .orsi la'oi .@t@.
+--
+-- = English
+--
+-- If @t@ indicates failure, then @toEither t@ is a 'Left' description
+-- of the failure.  If @t@ indicates that everything is 'Right', then
+-- @toEither t@ returns the first element of @t@.
+toEither :: (ExitCode, String, String)
+         -> Either ErrorCode String;
+toEither (ExitFailure t, a, b) = Left m
+  where {
+  m = "sysctlMatching: sysctl reports exit code " ++ show t ++
+      "and outputs " ++ show a ++ " and " ++ show b ++ " to the \
+      \standard output and standard error, respectively.";
+};
+toEither (_, a, _) = Right a;
