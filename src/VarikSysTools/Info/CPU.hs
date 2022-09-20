@@ -1,6 +1,15 @@
 {-# LANGUAGE CApiFFI #-}
 
--- | = la .lojban.
+-- | Module:    VarikSysTools.Base
+-- Decription:  le fancu poi filgau lo nu djuno fi lo rucyca'a
+--              / Functions which facilitate understanding CPUs
+-- Copyright:   (c) Varik Valefor 2022
+-- License:     Unlicense
+-- Maintainer:  varikvalefor@aol.com
+-- Stability:   experimental
+-- Portability: POSIX
+--
+-- = la .lojban.
 --
 -- ni'o le me'oi .module. cu vasru le fancu poi filgau lo nu djuno
 -- zo'e pe lo rucyca'a
