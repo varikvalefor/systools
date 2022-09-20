@@ -50,7 +50,22 @@ nfx a b = take (length a) b == a || nfx a (drop 1 b);
 -- failure.
 sysctlMatching :: [String]
                -> IO (Either ErrorCode [String]);
-sysctlMatching f = fmap (filter $ \t -> all (`nfx` t) f) <$> sysctlLines
+sysctlMatching f = fmap (filter $ \t -> all (`nfx` t) f) <$> sysctlLines;
+
+-- | = la .lojban.
+--
+-- ni'o gonai ge ko'a goi la'oi .@sysctlLines@. fliba gi skicu lo
+-- nu ko'a fliba gi lo'i lerpinsle poi se me'oi .output. la'o zoi.
+-- @sysctl(8) .zoi
+--
+-- = English
+--
+-- If @sysctlLines@ fails, then a 'Left' description of
+-- @sysctlLines@'s failure is returned.  If @sysctlLines@ does not
+-- fail, then @sysctlLines@ returns a 'Right' list of the lines which
+-- are output by sysctl(8).
+sysctlLines :: IO (Either ErrorCode [String]);
+sysctlLines = fmap lines . toEither <$> rpwe "sysctl" [] []
   where {
   -- \| = la .lojban.
   --
@@ -69,21 +84,6 @@ sysctlMatching f = fmap (filter $ \t -> all (`nfx` t) f) <$> sysctlLines
        -> IO (ExitCode, String, String);
   rpwe = readProcessWithExitCode;
 };
-
--- | = la .lojban.
---
--- ni'o gonai ge ko'a goi la'oi .@sysctlLines@. fliba gi skicu lo
--- nu ko'a fliba gi lo'i lerpinsle poi se me'oi .output. la'o zoi.
--- @sysctl(8) .zoi
---
--- = English
---
--- If @sysctlLines@ fails, then a 'Left' description of
--- @sysctlLines@'s failure is returned.  If @sysctlLines@ does not
--- fail, then @sysctlLines@ returns a 'Right' list of the lines which
--- are output by sysctl(8).
-sysctlLines :: IO (Either ErrorCode [String]);
-sysctlLines = fmap lines . toEither <$> rpwe "sysctl" [] [];
 
 -- | = la .lojban.
 --
